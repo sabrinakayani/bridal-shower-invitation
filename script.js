@@ -1,45 +1,31 @@
-// ===== ELEMENTS =====
 const envelope = document.getElementById("envelope");
 const card = document.getElementById("card");
-const flap = document.querySelector(".flap");
-const seal = document.querySelector(".seal");
+const particlesContainer = document.getElementById("particles");
 
-// ===== OPEN ENVELOPE =====
+// =====================
+// ENVELOPE OPEN
+// =====================
 envelope.addEventListener("click", () => {
-  
-  // animate flap opening
-  flap.style.transform = "rotateX(180deg)";
 
-  // fade out seal
-  seal.style.transition = "0.6s ease";
-  seal.style.opacity = "0";
+  envelope.classList.add("open");
 
-  // slight envelope lift
-  envelope.style.transform = "translateY(-10px) scale(1.02)";
-
-  // reveal invitation after delay
   setTimeout(() => {
     card.classList.remove("hidden");
-  }, 700);
+  }, 900);
 
 });
 
-// ===== BUTTON ACTIONS =====
-
-// Google Maps
+// =====================
+// BUTTONS
+// =====================
 function maps() {
-  window.open(
-    "https://www.google.com/maps/search/?api=1&query=Aya+Experience+Kirkland+Quebec",
-    "_blank"
-  );
+  window.open("https://www.google.com/maps/search/?api=1&query=Aya+Experience+Kirkland+Quebec", "_blank");
 }
 
-// RSVP (opens SMS)
 function rsvp() {
   window.open("sms:+15146592923?body=Hi! I would like to RSVP for Alvina's bridal shower", "_blank");
 }
 
-// Add to Calendar (.ics download)
 function calendar() {
   const event = `
 BEGIN:VCALENDAR
@@ -59,3 +45,21 @@ END:VCALENDAR`;
   a.download = "bridal-shower.ics";
   a.click();
 }
+
+// =====================
+// FLOATING PEARL PARTICLES
+// =====================
+function createParticles() {
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement("div");
+    p.classList.add("particle");
+
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = 6 + Math.random() * 6 + "s";
+    p.style.opacity = Math.random();
+
+    particlesContainer.appendChild(p);
+  }
+}
+
+createParticles();
