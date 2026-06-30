@@ -1,0 +1,52 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gold wax seal with a laurel leaf motif">
+  <defs>
+    <radialGradient id="sealBody" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#F1D9A0"/>
+      <stop offset="35%" stop-color="#D9B065"/>
+      <stop offset="70%" stop-color="#B4823F"/>
+      <stop offset="100%" stop-color="#8C6228"/>
+    </radialGradient>
+    <radialGradient id="sealShine" cx="32%" cy="26%" r="40%">
+      <stop offset="0%" stop-color="#FFF6DD" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFF6DD" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sealShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#5b4422" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- irregular wax blob edge -->
+  <path filter="url(#sealShadow)" fill="url(#sealBody)"
+    d="M100 10
+       C 124 8, 142 18, 156 32
+       C 172 26, 190 40, 188 58
+       C 200 70, 198 92, 186 102
+       C 196 116, 186 136, 170 140
+       C 174 158, 156 174, 138 168
+       C 130 184, 106 190, 92 178
+       C 76 192, 54 184, 50 166
+       C 32 170, 16 156, 20 138
+       C 6 128, 6 104, 18 92
+       C 8 78, 16 58, 34 54
+       C 32 36, 50 22, 66 28
+       C 74 14, 90 8, 100 10 Z"/>
+
+  <!-- inner rim -->
+  <circle cx="100" cy="100" r="78" fill="none" stroke="#7a5826" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- shine -->
+  <ellipse cx="72" cy="62" rx="46" ry="34" fill="url(#sealShine)"/>
+
+  <!-- laurel leaf motif -->
+  <g fill="none" stroke="#6e4d20" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.75">
+    <path d="M100 56 C 100 80, 100 120, 100 146"/>
+    <path d="M100 70 C 84 68, 72 78, 70 92"/>
+    <path d="M100 70 C 116 68, 128 78, 130 92"/>
+    <path d="M100 92 C 82 90, 70 100, 68 114"/>
+    <path d="M100 92 C 118 90, 130 100, 132 114"/>
+    <path d="M100 114 C 84 113, 74 122, 73 134"/>
+    <path d="M100 114 C 116 113, 126 122, 127 134"/>
+    <path d="M100 134 C 96 140, 96 142, 100 148"/>
+    <path d="M100 134 C 104 140, 104 142, 100 148"/>
+  </g>
+</svg>
