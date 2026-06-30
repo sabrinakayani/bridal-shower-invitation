@@ -1,4 +1,6 @@
-/* ===== BASE ===== */
+/* =====================
+   LUXURY BASE
+===================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,179 +8,208 @@
 }
 
 body {
-  font-family: 'Cormorant Garamond', serif;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f7f2ea;
+  font-family: "Cormorant Garamond", serif;
   overflow: hidden;
-  color: #2c2c2c;
+  color: #2a2a2a;
+  background: radial-gradient(circle at top, #ffffff 0%, #f6efe6 40%, #efe3d3 100%);
 }
 
-/* ===== BACKGROUND GLOW ===== */
-.bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top, #fff 0%, #f3eadf 60%, #efe3d3 100%);
-  z-index: -2;
-}
-
-/* subtle pearl shimmer */
-.bg::after {
+/* soft vignette overlay */
+body::before {
   content: "";
   position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-  animation: shimmer 8s infinite linear;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.08) 100%);
+  pointer-events: none;
 }
 
-@keyframes shimmer {
-  0% { transform: translate(-20%, -20%); }
-  50% { transform: translate(0%, 0%); }
-  100% { transform: translate(-20%, -20%); }
+/* =====================
+   BACKGROUND SHIMMER
+===================== */
+.bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #fff 0%, #f7f0e6 50%, #fff 100%);
+  opacity: 0.7;
+  z-index: -2;
+  animation: slowShift 12s ease-in-out infinite;
 }
 
-/* ===== LAYOUT ===== */
+@keyframes slowShift {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* =====================
+   LAYOUT
+===================== */
 .container {
   text-align: center;
   width: 90%;
-  max-width: 500px;
+  max-width: 520px;
+  animation: fadeIn 1.2s ease;
 }
 
-/* ===== TITLE ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   TITLE
+===================== */
 .title {
-  font-size: 32px;
+  font-size: 34px;
   letter-spacing: 1px;
+  font-weight: 500;
 }
 
 .subtitle {
   font-size: 14px;
+  opacity: 0.65;
   margin-top: 6px;
-  opacity: 0.7;
 }
 
-/* ===== ENVELOPE ===== */
+/* =====================
+   ENVELOPE (REALISTIC)
+===================== */
 .envelope {
-  width: 220px;
-  height: 140px;
-  margin: 40px auto;
+  width: 240px;
+  height: 150px;
+  margin: 45px auto;
   position: relative;
   cursor: pointer;
-  transition: transform 0.6s ease;
+  transition: all 0.6s ease;
+  filter: drop-shadow(0 18px 25px rgba(0,0,0,0.15));
 }
 
 .envelope:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.02);
 }
 
 /* body */
 .body {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: #fff;
-  border: 1px solid #e6d8c8;
-  border-radius: 6px;
-  position: absolute;
-  bottom: 0;
+  background: linear-gradient(145deg, #ffffff, #f3e9dc);
+  border: 1px solid rgba(176,141,87,0.25);
+  border-radius: 10px;
 }
 
 /* flap */
 .flap {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: #f9f3ea;
-  clip-path: polygon(0 0, 50% 50%, 100% 0);
-  position: absolute;
-  top: 0;
+  background: linear-gradient(145deg, #f8f1e7, #efe3d3);
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
   transform-origin: top;
-  transition: transform 0.8s ease;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* seal */
 .seal {
   position: absolute;
-  top: 45%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 38px;
-  height: 38px;
-  background: #c8a96a;
-  color: white;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
+  background: radial-gradient(circle, #d4b47a, #b08d57);
+  color: white;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   font-weight: bold;
   letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  transition: all 0.5s ease;
 }
 
-/* ===== INVITATION CARD ===== */
+/* =====================
+   INVITATION CARD
+===================== */
 .card {
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  border: 1px solid #e7d9c8;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   margin-top: 20px;
-  animation: fadeIn 1s ease;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(176,141,87,0.25);
+  border-radius: 16px;
+  padding: 28px 22px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  animation: riseIn 1s ease;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(25px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hidden {
   display: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== TEXT ===== */
+/* =====================
+   TEXT STYLING
+===================== */
 .name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 38px;
+  font-family: "Great Vibes", cursive;
+  font-size: 44px;
   color: #b08d57;
+  margin-bottom: 8px;
 }
 
 .event {
   font-size: 18px;
-  margin-bottom: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
 }
 
 .info {
   font-size: 14px;
-  line-height: 1.6;
-  margin: 15px 0;
+  line-height: 1.7;
+  color: #333;
 }
 
-/* ===== BUTTONS ===== */
+/* =====================
+   BUTTONS (LUXURY)
+===================== */
 .buttons {
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 button {
-  background: #b08d57;
+  background: linear-gradient(145deg, #b08d57, #9a7747);
   color: white;
   border: none;
-  padding: 10px 14px;
-  margin: 5px;
-  border-radius: 20px;
+  padding: 10px 16px;
+  margin: 6px;
+  border-radius: 25px;
   font-size: 12px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
 button:hover {
-  background: #8f6f3f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.18);
 }
 
-/* ===== FOOTER ===== */
+/* =====================
+   FOOTER
+===================== */
 .footer {
-  margin-top: 15px;
+  margin-top: 18px;
   font-size: 12px;
   opacity: 0.7;
+  font-style: italic;
 }
