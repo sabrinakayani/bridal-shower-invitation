@@ -1,6 +1,8 @@
-/* =====================
-   LUXURY BASE
-===================== */
+/* =========================
+   LUXURY EDITORIAL THEME
+   Cartier / Chanel inspired
+========================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,40 +16,32 @@ body {
   align-items: center;
   font-family: "Cormorant Garamond", serif;
   overflow: hidden;
-  color: #2a2a2a;
-  background: radial-gradient(circle at top, #ffffff 0%, #f6efe6 40%, #efe3d3 100%);
+  color: #1f1f1f;
+  background: #f7f4ef;
 }
 
-/* soft vignette overlay */
+/* soft editorial vignette */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.08) 100%);
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.08) 100%);
   pointer-events: none;
 }
 
-/* =====================
-   BACKGROUND SHIMMER
-===================== */
+/* =========================
+   BACKGROUND (VERY SUBTLE)
+========================= */
 .bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, #fff 0%, #f7f0e6 50%, #fff 100%);
-  opacity: 0.7;
+  background: linear-gradient(120deg, #f8f5f0, #f3ede4, #f8f5f0);
   z-index: -2;
-  animation: slowShift 12s ease-in-out infinite;
 }
 
-@keyframes slowShift {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* =====================
-   LAYOUT
-===================== */
+/* =========================
+   MAIN LAYOUT
+========================= */
 .container {
   text-align: center;
   width: 90%;
@@ -56,50 +50,51 @@ body::before {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* =====================
-   TITLE
-===================== */
+/* =========================
+   TYPOGRAPHY (EDITORIAL)
+========================= */
 .title {
-  font-size: 34px;
-  letter-spacing: 1px;
-  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 6px;
 }
 
 .subtitle {
-  font-size: 14px;
-  opacity: 0.65;
-  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  opacity: 0.6;
 }
 
-/* =====================
-   ENVELOPE (REALISTIC)
-===================== */
+/* =========================
+   ENVELOPE (REALISTIC PAPER)
+========================= */
 .envelope {
-  width: 240px;
-  height: 150px;
-  margin: 45px auto;
+  width: 260px;
+  height: 160px;
+  margin: 50px auto;
   position: relative;
   cursor: pointer;
-  transition: all 0.6s ease;
-  filter: drop-shadow(0 18px 25px rgba(0,0,0,0.15));
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 25px 30px rgba(0,0,0,0.12));
 }
 
 .envelope:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-4px);
 }
 
-/* body */
+/* base */
 .body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, #ffffff, #f3e9dc);
-  border: 1px solid rgba(176,141,87,0.25);
-  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 /* flap */
@@ -107,175 +102,122 @@ body::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, #f8f1e7, #efe3d3);
+  background: #fbfaf8;
   clip-path: polygon(0 0, 50% 55%, 100% 0);
   transform-origin: top;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* seal */
+/* wax seal (minimal gold) */
 .seal {
   position: absolute;
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: radial-gradient(circle, #d4b47a, #b08d57);
-  color: white;
-  font-size: 12px;
+  background: #c2a46b;
+  color: #fff;
+  font-size: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 500;
   letter-spacing: 1px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-  transition: all 0.5s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  transition: all 0.6s ease;
 }
 
-/* =====================
-   INVITATION CARD
-===================== */
+/* open state */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+/* =========================
+   INVITATION CARD (EDITORIAL)
+========================= */
 .card {
   margin-top: 20px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(176,141,87,0.25);
-  border-radius: 16px;
-  padding: 28px 22px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
-  animation: riseIn 1s ease;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 30px 24px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.10);
+  animation: rise 1s ease;
 }
 
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(25px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hidden {
   display: none;
 }
 
-/* =====================
-   TEXT STYLING
-===================== */
+/* =========================
+   NAME (ONLY LUXURY SCRIPT ELEMENT)
+========================= */
 .name {
   font-family: "Great Vibes", cursive;
-  font-size: 44px;
+  font-size: 42px;
   color: #b08d57;
   margin-bottom: 8px;
 }
 
+/* =========================
+   DETAILS
+========================= */
 .event {
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin-bottom: 18px;
-}
-
-.info {
   font-size: 14px;
-  line-height: 1.7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
   color: #333;
 }
 
-/* =====================
-   BUTTONS (LUXURY)
-===================== */
+.info {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* =========================
+   BUTTONS (MINIMAL LUXURY)
+========================= */
 .buttons {
   margin-top: 18px;
 }
 
 button {
-  background: linear-gradient(145deg, #b08d57, #9a7747);
-  color: white;
-  border: none;
+  background: transparent;
+  border: 1px solid #b08d57;
+  color: #b08d57;
   padding: 10px 16px;
   margin: 6px;
-  border-radius: 25px;
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(0,0,0,0.18);
+  background: #b08d57;
+  color: #fff;
 }
 
-/* =====================
+/* =========================
    FOOTER
-===================== */
+========================= */
 .footer {
   margin-top: 18px;
-  font-size: 12px;
-  opacity: 0.7;
-  font-style: italic;
-}
-
-/* =========================
-   PEARL PARTICLES
-========================= */
-#particles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, #fff, #e8d7c3);
-  border-radius: 50%;
+  font-size: 11px;
   opacity: 0.6;
-  animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(100vh) scale(0.8);
-    opacity: 0;
-  }
-  10% { opacity: 0.6; }
-  100% {
-    transform: translateY(-10vh) scale(1.2);
-    opacity: 0;
-  }
-}
-
-/* =========================
-   ENVELOPE “REAL OPEN” FX
-========================= */
-.flap {
-  transform-origin: top;
-}
-
-.envelope.open .flap {
-  transform: rotateX(180deg);
-}
-
-.envelope.open {
-  transform: scale(1.05);
-  transition: 0.8s ease;
-}
-
-/* seal pop effect */
-.envelope.open .seal {
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-}
-
-/* invitation glow when revealed */
-.card {
-  box-shadow: 0 30px 80px rgba(176,141,87,0.25);
-  border: 1px solid rgba(176,141,87,0.35);
-}
-
-/* subtle hover glow */
-.envelope:hover {
-  filter: drop-shadow(0 25px 35px rgba(0,0,0,0.18));
+  font-style: italic;
 }
