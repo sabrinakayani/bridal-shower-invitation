@@ -1,1 +1,184 @@
+/* ===== BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Cormorant Garamond', serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f2ea;
+  overflow: hidden;
+  color: #2c2c2c;
+}
+
+/* ===== BACKGROUND GLOW ===== */
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #fff 0%, #f3eadf 60%, #efe3d3 100%);
+  z-index: -2;
+}
+
+/* subtle pearl shimmer */
+.bg::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+  animation: shimmer 8s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translate(-20%, -20%); }
+  50% { transform: translate(0%, 0%); }
+  100% { transform: translate(-20%, -20%); }
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+/* ===== TITLE ===== */
+.title {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* ===== ENVELOPE ===== */
+.envelope {
+  width: 220px;
+  height: 140px;
+  margin: 40px auto;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+/* body */
+.body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #e6d8c8;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* flap */
+.flap {
+  width: 100%;
+  height: 100%;
+  background: #f9f3ea;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  position: absolute;
+  top: 0;
+  transform-origin: top;
+  transition: transform 0.8s ease;
+}
+
+/* seal */
+.seal {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  background: #c8a96a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ===== INVITATION CARD ===== */
+.card {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  border: 1px solid #e7d9c8;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  margin-top: 20px;
+  animation: fadeIn 1s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TEXT ===== */
+.name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  color: #b08d57;
+}
+
+.event {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.info {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+  margin-top: 15px;
+}
+
+button {
+  background: #b08d57;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #8f6f3f;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.7;
+}
